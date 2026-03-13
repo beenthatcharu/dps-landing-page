@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background */
+    --background: 210 20% 97%;
+    --foreground: 222 47% 11%;
+
+    /* Cards */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* DPS NAVY */
+    --primary: 213 67% 17%; 
+    --primary-foreground: 210 40% 98%;
+
+    /* Light section */
+    --secondary: 210 25% 95%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted */
+    --muted: 210 25% 95%;
+    --muted-foreground: 215 16% 47%;
+
+    /* DPS GOLD */
+    --accent: 45 90% 50%;
+    --accent-foreground: 213 67% 17%;
+
+    /* Error */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders */
+    --border: 214 30% 90%;
+    --input: 214 30% 90%;
+
+    --ring: 45 90% 50%;
+
+    --radius: 1.25rem;
+  }
+
+  .dark {
+    --background: 213 67% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 213 67% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 213 67% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 213 67% 17%;
+
+    --secondary: 213 40% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 213 40% 20%;
+    --muted-foreground: 215 20% 70%;
+
+    --accent: 45 90% 50%;
+    --accent-foreground: 213 67% 17%;
+
+    --destructive: 0 62% 35%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 213 40% 20%;
+    --input: 213 40% 20%;
+    --ring: 45 90% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body selection:bg-accent selection:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline tracking-tight;
+  }
+}
+
+@layer components {
+
+  /* Glass effect */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-2xl;
+  }
+
+  /* DPS Hero Gradient */
+  .premium-gradient {
+    @apply bg-gradient-to-br from-[#0E2A47] via-[#132f4c] to-[#1B3F6B];
+  }
+
+  /* Light decorative gradient */
+  .soft-gradient {
+    @apply bg-gradient-to-tr from-[#F2B705]/10 via-transparent to-[#0E2A47]/5;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-24 lg:py-32;
+  }
+}

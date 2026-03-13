@@ -1,0 +1,23 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "school-hero-bg",
+      "description": "Modern international school campus background",
+      "imageUrl": "https://picsum.photos/seed/dps1/1920/1080",
+      "imageHint": "school campus"
+    },
+    {
+      "id": "school-children-learning",
+      "description": "Happy children in a modern classroom setting",
+      "imageUrl": "https://picsum.photos/seed/dps2/800/600",
+      "imageHint": "classroom children"
+    },
+    {
+      "id": "school-facilities",
+      "description": "State of the art school facilities",
+      "imageUrl": "https://picsum.photos/seed/dps3/1200/800",
+      "imageHint": "school library"
+    }
+  ]
+}
