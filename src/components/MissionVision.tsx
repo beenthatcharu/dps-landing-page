@@ -35,7 +35,7 @@ SOCIAL RESPONSIBILITY – Building a Better Future Today.`,
 export default function MissionVision() {
   return (
     <section
-      className="section-padding relative overflow-hidden bg-cover bg-center"
+      className="relative overflow-hidden bg-cover bg-center py-20 md:py-24 lg:py-32"
       style={{
         backgroundImage:
           "url('https://images.assets-landingi.com/uc/7d5cda0d-e32d-43b5-9112-79a17395c559/SEN001623.JPG')",
@@ -53,10 +53,11 @@ export default function MissionVision() {
       </div>
 
       {/* Decorative Orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] bg-accent/20 rounded-full blur-[160px] opacity-20" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[900px] lg:w-[1200px] h-[300px] md:h-[500px] lg:h-[600px] bg-accent/20 rounded-full blur-[120px] md:blur-[160px] opacity-20" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-14">
+
           {cards.map((card, i) => (
             <motion.div
               key={i}
@@ -66,24 +67,27 @@ export default function MissionVision() {
               transition={{ delay: i * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="group"
             >
-              <div className="h-full p-12 lg:p-14 rounded-[4rem] bg-white/5 backdrop-blur-2xl border border-white/10 hover:bg-white/[0.08] transition-all duration-700 hover:shadow-[0_60px_100px_-30px_rgba(0,0,0,0.4)] hover:-translate-y-3 flex flex-col items-center text-center">
-                <div className={`w-24 h-24 rounded-[2rem] flex items-center justify-center mb-10 bg-gradient-to-br ${card.color} shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700`}>
-                  <card.icon className="w-12 h-12 text-white" />
+              <div className="h-full p-6 sm:p-8 md:p-10 lg:p-12 rounded-[2rem] md:rounded-[3rem] lg:rounded-[4rem] bg-white/5 backdrop-blur-2xl border border-white/10 hover:bg-white/[0.08] transition-all duration-700 hover:shadow-[0_60px_100px_-30px_rgba(0,0,0,0.4)] hover:-translate-y-3 flex flex-col items-center text-center">
+
+                <div className={`w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center mb-6 md:mb-8 lg:mb-10 bg-gradient-to-br ${card.color} shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700`}>
+                  <card.icon className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white" />
                 </div>
 
-                <h3 className="text-3xl lg:text-4xl font-black text-white mb-8 font-headline tracking-tight">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-6 md:mb-8 font-headline tracking-tight">
                   {card.title}
                 </h3>
 
-                <p className="text-white/70 text-lg lg:text-xl leading-relaxed font-medium whitespace-pre-line">
+                <p className="text-white/70 text-base md:text-lg lg:text-xl leading-relaxed font-medium whitespace-pre-line">
                   {card.text}
                 </p>
 
               </div>
             </motion.div>
           ))}
+
         </div>
       </div>
+
     </section>
   );
 }

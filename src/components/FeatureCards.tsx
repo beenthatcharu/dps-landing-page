@@ -50,51 +50,51 @@ const item = {
 
 export default function FeatureCards() {
   return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white">
+    <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white">
 
       {/* Background glow */}
-      <div className="absolute top-0 left-1/3 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] -z-10" />
-      <div className="absolute bottom-0 right-1/3 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px] -z-10" />
+      <div className="absolute top-0 left-1/3 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-500/10 rounded-full blur-[120px] md:blur-[150px] -z-10" />
+      <div className="absolute bottom-0 right-1/3 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-purple-500/10 rounded-full blur-[120px] md:blur-[150px] -z-10" />
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
 
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-14"
         >
           {features.map((f, i) => (
             <motion.div key={i} variants={item}>
-              <Card className="h-full group hover:shadow-[0_70px_140px_-20px_rgba(0,0,0,0.18)] hover:-translate-y-6 transition-all duration-700 border border-white/60 rounded-[3rem] p-6 bg-white/90 backdrop-blur-md relative overflow-hidden">
+              <Card className="h-full group hover:shadow-[0_70px_140px_-20px_rgba(0,0,0,0.18)] hover:-translate-y-6 transition-all duration-700 border border-white/60 rounded-[2rem] md:rounded-[3rem] p-4 md:p-6 bg-white/90 backdrop-blur-md relative overflow-hidden">
 
                 {/* hover gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-blue-500/[0.03] to-purple-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-                <CardHeader className="p-6 relative z-10">
+                <CardHeader className="p-4 md:p-6 relative z-10">
 
                   {/* icon glow */}
-                  <div className="relative mb-8">
+                  <div className="relative mb-6 md:mb-8">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 blur-xl rounded-[2rem] opacity-0 group-hover:opacity-100 transition duration-700"></div>
 
                     <div
-                      className={`relative w-20 h-20 ${f.color} rounded-[2rem] flex items-center justify-center shadow-md
+                      className={`relative w-16 h-16 md:w-20 md:h-20 ${f.color} rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center shadow-md
                       group-hover:scale-110 group-hover:-rotate-3 transition-all duration-700`}
                     >
                       <f.icon
-                        className={`w-10 h-10 ${f.iconColor} transition-transform duration-700 group-hover:scale-110`}
+                        className={`w-8 h-8 md:w-10 md:h-10 ${f.iconColor} transition-transform duration-700 group-hover:scale-110`}
                       />
                     </div>
                   </div>
 
-                  <CardTitle className="text-2xl lg:text-3xl font-black font-headline text-primary group-hover:text-blue-600 transition-colors duration-300 leading-tight">
+                  <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-black font-headline text-primary group-hover:text-blue-600 transition-colors duration-300 leading-tight">
                     {f.title}
                   </CardTitle>
                 </CardHeader>
 
-                <CardContent className="px-6 pb-10 relative z-10">
-                  <p className="text-muted-foreground text-lg leading-relaxed font-medium">
+                <CardContent className="px-4 md:px-6 pb-6 md:pb-10 relative z-10">
+                  <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-medium">
                     {f.description}
                   </p>
                 </CardContent>

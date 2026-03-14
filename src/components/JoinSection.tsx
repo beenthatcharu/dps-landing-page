@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function JoinSection() {
   return (
-    <section className="relative py-40 lg:py-52 overflow-hidden text-white text-center">
+    <section className="relative py-24 md:py-32 lg:py-52 overflow-hidden text-white text-center">
 
       {/* Background */}
       <div
@@ -21,42 +21,42 @@ export default function JoinSection() {
       <div className="absolute inset-0 bg-[#0E2A47]/80" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-      <div className="relative container mx-auto px-6 max-w-5xl">
+      <div className="relative container mx-auto px-4 sm:px-6 max-w-5xl">
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
           viewport={{ once: true }}
-          className="space-y-10"
+          className="space-y-8 md:space-y-10"
         >
 
           {/* Subtitle */}
-          <p className="text-[#F2B705] font-semibold tracking-wider uppercase">
+          <p className="text-[#F2B705] font-semibold tracking-wider uppercase text-sm md:text-base">
             Where Learning Knows No Boundaries
           </p>
 
           {/* Heading */}
-          <h2 className="text-4xl lg:text-6xl font-bold leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
             Join DPS International School
           </h2>
 
           {/* Description */}
-          <p className="text-lg lg:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto">
             DPSIS started its operation at Singapore on 19th April 2004.
             At school, our earnest desire is to nurture the young fertile minds
             by positive development through excellent academic and extra
             curricular inputs.
           </p>
 
-          <p className="text-lg lg:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto">
             The school ensures that students coming from diverse communities,
             regions, backgrounds and professions are given a common platform
             and equal opportunities.
           </p>
 
           {/* Button */}
-          <div className="flex justify-center pt-6">
+          <div className="flex justify-center pt-4 md:pt-6">
 
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -64,9 +64,9 @@ export default function JoinSection() {
             >
               <Button
                 size="lg"
-                className="bg-[#F2B705] text-black hover:bg-yellow-400 h-16 px-12 text-lg font-semibold rounded-xl shadow-lg transition-all"
+                className="bg-[#F2B705] text-black hover:bg-yellow-400 h-12 md:h-16 px-8 md:px-12 text-base md:text-lg font-semibold rounded-xl shadow-lg transition-all"
               >
-                <Download className="mr-3 w-5 h-5" />
+                <Download className="mr-2 md:mr-3 w-4 h-4 md:w-5 md:h-5" />
                 Download Prospectus
               </Button>
             </motion.div>
@@ -77,7 +77,7 @@ export default function JoinSection() {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0E2A47] to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-20 md:h-32 bg-gradient-to-t from-[#0E2A47] to-transparent" />
 
     </section>
   );
