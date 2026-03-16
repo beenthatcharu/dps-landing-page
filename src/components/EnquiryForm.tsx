@@ -19,7 +19,6 @@ import { ShieldCheck } from "lucide-react";
 export default function EnquiryForm() {
 
   const router = useRouter();
-
   const [step,setStep] = useState(1);
 
   const [formData, setFormData] = useState({
@@ -81,7 +80,6 @@ Step {step}: Basic Information (Academic Year 2026-27)
 <div className="grid grid-cols-1 gap-5">
 
 <div className="space-y-2">
-
 <Label htmlFor="fullName" className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
 Name
 </Label>
@@ -94,11 +92,24 @@ value={formData.fullName}
 onChange={handleInputChange}
 className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white transition-all duration-300 rounded-2xl"
 />
-
 </div>
 
 <div className="space-y-2">
+<Label htmlFor="childName" className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
+Name of Child
+</Label>
 
+<Input
+id="childName"
+placeholder="Full name of student"
+required
+value={formData.childName}
+onChange={handleInputChange}
+className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white transition-all duration-300 rounded-2xl"
+/>
+</div>
+
+<div className="space-y-2">
 <Label htmlFor="email" className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
 Email Address
 </Label>
@@ -112,115 +123,42 @@ value={formData.email}
 onChange={handleInputChange}
 className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white transition-all duration-300 rounded-2xl"
 />
-
 </div>
 
+{/* Phone hidden but not deleted */}
+{/*
 <div className="space-y-2">
-
-<Label htmlFor="phone" className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
-Phone Number
-</Label>
-
-<Input
-id="phone"
-type="tel"
-placeholder="+1 234 567 890"
-required
-value={formData.phone}
-onChange={handleInputChange}
-className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white transition-all duration-300 rounded-2xl"
-/>
-
+<Label htmlFor="phone">Phone Number</Label>
+<Input id="phone" type="tel" value={formData.phone} onChange={handleInputChange}/>
 </div>
+*/}
 
 </div>
 
 )}
 
-{/* STEP 2 (existing fields) */}
+{/* STEP 2 kept but empty to preserve structure */}
 
 {step === 2 && (
-
 <>
+{/* Campus + Grade hidden but preserved */}
 
-<div className="grid grid-cols-1 gap-5">
-
-<div className="space-y-2">
-
-<Label htmlFor="childName" className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
-Name of Child
-</Label>
-
-<Input
-id="childName"
-placeholder="Full name of student"
-required
-value={formData.childName}
-onChange={handleInputChange}
-className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white transition-all duration-300 rounded-2xl"
-/>
-
-</div>
-
-</div>
-
-<div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-
-<div className="space-y-2">
-
-<Label className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
-Campus Preference
-</Label>
-
-<Select onValueChange={(v) => handleSelectChange("campus", v)} required>
-
-<SelectTrigger className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white transition-all duration-300 rounded-2xl">
-<SelectValue placeholder="Select Campus" />
-</SelectTrigger>
-
-<SelectContent className="rounded-2xl border-primary/5">
-
+{/*
+<Select onValueChange={(v) => handleSelectChange("campus", v)}>
+<SelectTrigger><SelectValue placeholder="Select Campus"/></SelectTrigger>
+<SelectContent>
 <SelectItem value="main">Main Campus</SelectItem>
-<SelectItem value="city">City Campus</SelectItem>
-<SelectItem value="west">West Campus</SelectItem>
-
 </SelectContent>
-
 </Select>
 
-</div>
-
-<div className="space-y-2">
-
-<Label className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
-Applying for Grade
-</Label>
-
-<Select onValueChange={(v) => handleSelectChange("grade", v)} required>
-
-<SelectTrigger className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white transition-all duration-300 rounded-2xl">
-<SelectValue placeholder="Select Grade" />
-</SelectTrigger>
-
-<SelectContent className="rounded-2xl border-primary/5">
-
-<SelectItem value="pre-nursery">Pre-Nursery</SelectItem>
-<SelectItem value="nursery">Nursery</SelectItem>
-<SelectItem value="kg">KG</SelectItem>
+<Select onValueChange={(v) => handleSelectChange("grade", v)}>
+<SelectTrigger><SelectValue placeholder="Select Grade"/></SelectTrigger>
+<SelectContent>
 <SelectItem value="1">Grade 1</SelectItem>
-<SelectItem value="2">Grade 2</SelectItem>
-<SelectItem value="3">Grade 3</SelectItem>
-
 </SelectContent>
-
 </Select>
-
-</div>
-
-</div>
-
+*/}
 </>
-
 )}
 
 <motion.div
