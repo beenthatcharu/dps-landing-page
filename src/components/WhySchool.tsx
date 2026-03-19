@@ -22,10 +22,10 @@ export default function WhySchool() {
       <div className="absolute top-0 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-blue-500/20 blur-[120px] md:blur-[160px] rounded-full -z-10"/>
       <div className="absolute bottom-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-500/20 blur-[120px] md:blur-[160px] rounded-full -z-10"/>
 
-      <div className="container mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
+      {/* ✅ FIXED ALIGNMENT */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
 
         {/* IMAGE */}
-
         <motion.div
           initial={{opacity:0,scale:0.9}}
           whileInView={{opacity:1,scale:1}}
@@ -49,7 +49,6 @@ export default function WhySchool() {
         </motion.div>
 
         {/* CONTENT */}
-
         <div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
@@ -59,7 +58,6 @@ export default function WhySchool() {
           <div className="w-16 md:w-20 h-1 bg-blue-500 mt-3 md:mt-4 mb-8 md:mb-10 rounded-full"></div>
 
           {/* BENEFITS */}
-
           <div className="space-y-3 md:space-y-4">
 
             {benefits.map((benefit, i) => (

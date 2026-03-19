@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,8 +17,8 @@ import { ShieldCheck } from "lucide-react";
 
 export default function EnquiryForm() {
 
-  const router = useRouter();
-  const [step,setStep] = useState(1);
+  const [step, setStep] = useState(1);
+  const [submitted, setSubmitted] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -30,25 +29,28 @@ export default function EnquiryForm() {
     grade: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSelectChange = (id: string, value: string) => {
+  const handleSelectChange = (id, value) => {
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSend = (e: React.FormEvent) => {
+  const handleSend = (e) => {
     e.preventDefault();
 
-    if(step === 1){
-      setStep(2);
+    if (step === 1) {
+      setStep(2); // same page pe step 2
       return;
     }
 
-    localStorage.setItem("dps_step_1", JSON.stringify(formData));
-    router.push("/step-2");
+    // FINAL SUBMIT
+    console.log("Form Data:", formData);
+
+    // thank you screen show
+    setSubmitted(true);
   };
 
   return (
@@ -60,27 +62,51 @@ export default function EnquiryForm() {
 <CardHeader className="space-y-3 p-10 pb-4">
 
 <CardTitle className="text-3xl font-black font-headline text-primary tracking-tight">
-Admission Enquiry
+ Enquire Now
 </CardTitle>
 
-<CardDescription className="text-muted-foreground/80 text-base font-medium">
-Step {step}: Basic Information (Academic Year 2026-27)
-</CardDescription>
+<CardDescription className="text-muted-foreground/80 text-base font-medium" />
 
 </CardHeader>
 
 <CardContent className="p-10 pt-4">
 
+{/* ✅ THANK YOU SCREEN */}
+{submitted ? (
+
+<div className="flex flex-col items-center justify-center text-center space-y-6 py-10">
+
+<h2 className="text-2xl font-bold text-primary">
+🎉 Thank You!
+</h2>
+
+<p className="text-muted-foreground max-w-sm">
+Your enquiry has been submitted successfully. Our team will contact you soon.
+</p>
+
+<Button
+onClick={() => {
+  setSubmitted(false);
+  setStep(1);
+}}
+className="mt-4"
+>
+Submit Another Response
+</Button>
+
+</div>
+
+) : (
+
 <form onSubmit={handleSend} className="space-y-6">
 
 {/* STEP 1 */}
-
 {step === 1 && (
 
 <div className="grid grid-cols-1 gap-5">
 
 <div className="space-y-2">
-<Label htmlFor="fullName" className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
+<Label className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
 Name
 </Label>
 
@@ -90,12 +116,12 @@ placeholder="Your Name"
 required
 value={formData.fullName}
 onChange={handleInputChange}
-className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white transition-all duration-300 rounded-2xl"
+className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white rounded-2xl"
 />
 </div>
 
 <div className="space-y-2">
-<Label htmlFor="childName" className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
+<Label className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
 Name of Child
 </Label>
 
@@ -105,12 +131,12 @@ placeholder="Full name of student"
 required
 value={formData.childName}
 onChange={handleInputChange}
-className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white transition-all duration-300 rounded-2xl"
+className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white rounded-2xl"
 />
 </div>
 
 <div className="space-y-2">
-<Label htmlFor="email" className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
+<Label className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
 Email Address
 </Label>
 
@@ -121,62 +147,80 @@ placeholder="email@example.com"
 required
 value={formData.email}
 onChange={handleInputChange}
-className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white transition-all duration-300 rounded-2xl"
+className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white rounded-2xl"
 />
 </div>
-
-{/* Phone hidden but not deleted */}
-{/*
-<div className="space-y-2">
-<Label htmlFor="phone">Phone Number</Label>
-<Input id="phone" type="tel" value={formData.phone} onChange={handleInputChange}/>
-</div>
-*/}
 
 </div>
 
 )}
 
-{/* STEP 2 kept but empty to preserve structure */}
-
+{/* STEP 2 */}
 {step === 2 && (
-<>
-{/* Campus + Grade hidden but preserved */}
 
-{/*
+<div className="grid grid-cols-1 gap-5">
+
+<div className="space-y-2">
+<Label className="text-[10px] uppercase tracking-[0.2em] font-black text-primary/40 ml-1">
+Phone Number
+</Label>
+
+<Input
+id="phone"
+placeholder="+91 9876543210"
+value={formData.phone}
+onChange={handleInputChange}
+className="h-14 bg-secondary/40 border-transparent focus:border-accent/20 focus:bg-white rounded-2xl"
+/>
+</div>
+
 <Select onValueChange={(v) => handleSelectChange("campus", v)}>
-<SelectTrigger><SelectValue placeholder="Select Campus"/></SelectTrigger>
+<SelectTrigger className="h-14 rounded-2xl bg-secondary/40 border-transparent">
+<SelectValue placeholder="Select Campus"/>
+</SelectTrigger>
 <SelectContent>
 <SelectItem value="main">Main Campus</SelectItem>
+<SelectItem value="branch">Branch Campus</SelectItem>
 </SelectContent>
 </Select>
 
 <Select onValueChange={(v) => handleSelectChange("grade", v)}>
-<SelectTrigger><SelectValue placeholder="Select Grade"/></SelectTrigger>
+<SelectTrigger className="h-14 rounded-2xl bg-secondary/40 border-transparent">
+<SelectValue placeholder="Select Grade"/>
+</SelectTrigger>
 <SelectContent>
+<SelectItem value="nursery">Nursery</SelectItem>
+<SelectItem value="kg">Kindergarten</SelectItem>
 <SelectItem value="1">Grade 1</SelectItem>
 </SelectContent>
 </Select>
-*/}
-</>
+
+</div>
+
 )}
 
-<motion.div
-whileHover={{ scale: 1.02 }}
-whileTap={{ scale: 0.98 }}
-className="pt-2"
->
+<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="pt-2">
 
 <Button
 type="submit"
-className="w-full bg-accent hover:bg-accent/90 text-white font-black h-16 text-lg rounded-2xl shadow-[0_20px_40px_-10px_rgba(var(--accent),0.4)] transition-all flex items-center justify-center"
+className="w-full bg-accent hover:bg-accent/90 text-white font-black h-16 text-lg rounded-2xl"
 >
-
-{step === 1 ? "Next Step" : "Continue Application"}
-
+{step === 1 ? "Next Step" : "Submit"}
 </Button>
 
 </motion.div>
+
+{/* 🔙 Back Button */}
+{step === 2 && (
+<Button
+type="button"
+variant="ghost"
+onClick={() => setStep(1)}
+className="w-full text-sm"
+>
+← Back
+</Button>
+)}
 
 <div className="flex items-center justify-center space-x-2 text-[10px] text-muted-foreground uppercase tracking-[0.2em] font-black">
 
@@ -187,6 +231,8 @@ className="w-full bg-accent hover:bg-accent/90 text-white font-black h-16 text-l
 </div>
 
 </form>
+
+)}
 
 </CardContent>
 

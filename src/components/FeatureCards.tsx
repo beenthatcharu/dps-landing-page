@@ -56,7 +56,8 @@ export default function FeatureCards() {
       <div className="absolute top-0 left-1/3 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-500/10 rounded-full blur-[120px] md:blur-[150px] -z-10" />
       <div className="absolute bottom-0 right-1/3 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-purple-500/10 rounded-full blur-[120px] md:blur-[150px] -z-10" />
 
-      <div className="container mx-auto px-4 sm:px-6">
+      {/* ✅ FIXED ALIGNMENT (same as navbar + hero) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <motion.div
           variants={container}

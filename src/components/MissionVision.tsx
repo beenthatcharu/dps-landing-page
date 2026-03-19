@@ -42,20 +42,22 @@ export default function MissionVision() {
       }}
     >
 
-      {/* dark overlay for readability */}
+      {/* dark overlay */}
       <div className="absolute inset-0 bg-primary/80 backdrop-blur-sm"></div>
 
-      {/* Abstract Background Decoration */}
+      {/* Abstract Background */}
       <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
           <path d="M0,100 C20,80 50,120 100,100 L100,0 L0,0 Z" fill="white" />
         </svg>
       </div>
 
-      {/* Decorative Orbs */}
+      {/* Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[900px] lg:w-[1200px] h-[300px] md:h-[500px] lg:h-[600px] bg-accent/20 rounded-full blur-[120px] md:blur-[160px] opacity-20" />
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      {/* ✅ FIXED ALIGNMENT */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-14">
 
           {cards.map((card, i) => (
