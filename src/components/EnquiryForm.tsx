@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // ✅ ADDED
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,11 +12,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 
 export default function EnquiryForm() {
+
+  const router = useRouter(); // ✅ ADDED
 
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
@@ -42,15 +51,18 @@ export default function EnquiryForm() {
     e.preventDefault();
 
     if (step === 1) {
-      setStep(2); // same page pe step 2
+      setStep(2);
       return;
     }
 
     // FINAL SUBMIT
     console.log("Form Data:", formData);
 
-    // thank you screen show
-    setSubmitted(true);
+    // ❌ old:
+    // setSubmitted(true);
+
+    // ✅ NEW: redirect
+    router.push("/thank-you");
   };
 
   return (
@@ -71,7 +83,7 @@ export default function EnquiryForm() {
 
 <CardContent className="p-10 pt-4">
 
-{/* ✅ THANK YOU SCREEN */}
+{/* ✅ THANK YOU SCREEN (still here, but unused now) */}
 {submitted ? (
 
 <div className="flex flex-col items-center justify-center text-center space-y-6 py-10">
