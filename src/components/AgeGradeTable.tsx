@@ -2,7 +2,7 @@
 
 export function AgeGradeTable() {
   return (
-    <div className="bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden w-[300px]">
+    <div className="bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden w-full max-w-[300px] mx-auto">
 
       {/* Header */}
       <div className="bg-[#F2B705] text-black font-bold text-sm px-4 py-3 text-center border-b border-gray-300">
