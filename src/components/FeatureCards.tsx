@@ -8,7 +8,7 @@ const features = [
   {
     title: "Holistic Education Approach",
     description:
-      "Our curriculum blends academic excellence with diverse talents. Our holistic education nurtures academic, artistic, athletic, and emotional aspects, fostering confident, well-rounded individuals.",
+      "Acknowledging uniqueness and diverse talents, our holistic education nurtures academic, artistic, athletic, and emotional aspects, fostering confident, well-rounded individuals.",
     icon: BookOpenCheck,
     color: "bg-blue-50 text-blue-600",
     borderColor: "border-blue-200",
@@ -16,7 +16,9 @@ const features = [
   {
     title: "Access to World Class Faculty",
     description:
-      "Comprised of passionate, experienced educators, our faculty cultivates curiosity, critical thinking, and creativity, mentoring students to achieve their fullest potential globally.",
+      "Comprised of passionate, experienced educators, our faculty cultivates curiosity, critical thinking, and creativity, mentoring students to achieve their fullest potential.",
+
+
     icon: UserRoundCheck,
     color: "bg-purple-50 text-purple-600",
     borderColor: "border-purple-200",
@@ -70,7 +72,7 @@ export default function FeatureCards() {
                 {/* Icon Section - Centered like reference */}
                 <div className="mb-6">
                   <div
-                    className={`w-16 h-16 md:w-20 md:h-20 ${f.color} rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110`}
+                    className={`w-16 h-16 md:w-20 md:h-20 ${f.color} rounded-2xl flex items-center justify-center transition-`}
                   >
                     <f.icon className="w-8 h-8 md:w-10 md:h-10" />
                   </div>
