@@ -1,84 +1,52 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 export default function JoinSection() {
   return (
-    <section className="relative py-24 md:py-32 lg:py-52 overflow-hidden text-white text-center">
-
-      {/* Background */}
+    <section className="relative py-24 md:py-32 text-white text-center overflow-hidden">
+      {/* Background Image - Exactly as per screenshot */}
       <div
-        className="absolute inset-0 bg-cover bg-center scale-105"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('https://cdn.lugc.link/90d7fd4e-1c9c-48e6-898f-ef737995c3ad/-/stretch/off/-/resize/x634/-/format/auto/')",
+          backgroundImage: "url('https://cdn.lugc.link/90d7fd4e-1c9c-48e6-898f-ef737995c3ad/-/format/auto/')",
         }}
       />
+      {/* Overlay to match the darkened look of the image */}
+      <div className="absolute inset-0 bg-black/60 md:bg-black/50" />
 
-      {/* Premium Overlay */}
-      <div className="absolute inset-0 bg-[#0E2A47]/80" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+      <div className="relative z-10 max-w-5xl mx-auto px-6 space-y-8">
+        {/* School Icon/Logo above heading as per image */}
+        <div className="flex justify-center mb-4">
+            <img src="https://cdn-icons-png.flaticon.com/512/167/167707.png" className="w-20 h-20 md:w-28 md:h-28" alt="School Icon" />
+        </div>
 
-      <div className="relative container mx-auto px-4 sm:px-6 max-w-5xl">
+        <p className="text-yellow-500 font-semibold tracking-widest uppercase text-xs md:text-sm">
+          Where Learning Knows No Boundaries
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9 }}
-          viewport={{ once: true }}
-          className="space-y-8 md:space-y-10"
-        >
+        <h2 className="text-3xl md:text-6xl font-bold tracking-tight leading-tight">
+          Join DPS International School
+        </h2>
 
-          {/* Subtitle */}
-          <p className="text-[#F2B705] font-semibold tracking-wider uppercase text-sm md:text-base">
-            Where Learning Knows No Boundaries
+        <div className="space-y-6 max-w-4xl mx-auto">
+          <p className="text-sm md:text-xl font-medium text-gray-100/90 leading-relaxed">
+            DPSIS started its operation at Singapore on 19th April 2004. At school, our earnest desire is to nurture the young fertile minds by positive development through excellent academic and extra curricular inputs.
           </p>
-
-          {/* Heading */}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
-            Join DPS International School
-          </h2>
-
-          {/* Description */}
-          <p className="text-base md:text-lg lg:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto">
-            DPSIS started its operation at Singapore on 19th April 2004.
-            At school, our earnest desire is to nurture the young fertile minds
-            by positive development through excellent academic and extra
-            curricular inputs.
+          <p className="text-sm md:text-xl font-medium text-gray-100/90 leading-relaxed">
+            The school ensures that students coming from diverse communities, regions, backgrounds and professions are given a common platform and equal opportunities.
           </p>
+        </div>
 
-          <p className="text-base md:text-lg lg:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto">
-            The school ensures that students coming from diverse communities,
-            regions, backgrounds and professions are given a common platform
-            and equal opportunities.
-          </p>
-
-          {/* Button */}
-          <div className="flex justify-center pt-4 md:pt-6">
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button
-                size="lg"
-                className="bg-[#F2B705] text-black hover:bg-yellow-400 h-12 md:h-16 px-8 md:px-12 text-base md:text-lg font-semibold rounded-xl shadow-lg transition-all"
-              >
-                <Download className="mr-2 md:mr-3 w-4 h-4 md:w-5 md:h-5" />
-                Download Prospectus
-              </Button>
-            </motion.div>
-
-          </div>
-
-        </motion.div>
+        <div className="pt-8">
+          <Button 
+            className="bg-[#F2B705] text-black hover:bg-yellow-400 h-12 md:h-14 px-10 md:px-14 text-sm md:text-lg font-bold rounded-lg shadow-lg transition-all"
+          >
+            Download Prospectus
+          </Button>
+        </div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 w-full h-20 md:h-32 bg-gradient-to-t from-[#0E2A47] to-transparent" />
-
     </section>
   );
 }

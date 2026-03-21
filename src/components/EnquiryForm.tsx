@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // ✅ ADDED
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -24,7 +24,7 @@ import { ShieldCheck } from "lucide-react";
 
 export default function EnquiryForm() {
 
-  const router = useRouter(); // ✅ ADDED
+  const router = useRouter();
 
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
@@ -47,7 +47,8 @@ export default function EnquiryForm() {
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSend = (e) => {
+  // ✅ UPDATED FUNCTION (HubSpot API CONNECTED)
+  const handleSend = async (e) => {
     e.preventDefault();
 
     if (step === 1) {
@@ -55,14 +56,33 @@ export default function EnquiryForm() {
       return;
     }
 
-    // FINAL SUBMIT
-    console.log("Form Data:", formData);
+    try {
+      console.log("Form Data:", formData);
 
-    // ❌ old:
-    // setSubmitted(true);
+      const res = await fetch("/api/hubspot", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          campus: formData.campus,
+          grade: formData.grade,
+        }),
+      });
 
-    // ✅ NEW: redirect
-    router.push("/thank-you");
+      const data = await res.json();
+
+      console.log("HubSpot Response:", data);
+
+      // redirect after success
+      router.push("/thank-you");
+
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (
@@ -83,7 +103,6 @@ export default function EnquiryForm() {
 
 <CardContent className="p-10 pt-4">
 
-{/* ✅ THANK YOU SCREEN (still here, but unused now) */}
 {submitted ? (
 
 <div className="flex flex-col items-center justify-center text-center space-y-6 py-10">
@@ -222,7 +241,6 @@ className="w-full bg-accent hover:bg-accent/90 text-white font-black h-16 text-l
 
 </motion.div>
 
-{/* 🔙 Back Button */}
 {step === 2 && (
 <Button
 type="button"
