@@ -192,9 +192,9 @@ export default function EnquiryForm() {
                     <SelectContent>
                       <SelectItem value="nursery">Nursery</SelectItem>
                       <SelectItem value="kg">Kindergarten 1</SelectItem>
-                      <SelectItem value="kg">Kindergarten 2</SelectItem>
-                      <SelectItem value="1">Grade 1</SelectItem>
-                      <SelectItem value="1">Grade 2</SelectItem>
+                      <SelectItem value="kg1">Kindergarten 2</SelectItem>
+                      <SelectItem value="2">Grade 1</SelectItem>
+                      <SelectItem value="3">Grade 2</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
