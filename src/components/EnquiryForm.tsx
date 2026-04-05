@@ -74,7 +74,7 @@ export default function EnquiryForm() {
   };
 
   return (
-    <Card className="w-full max-w-[380px] bg-white text-foreground shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-100 overflow-hidden rounded-[1.5rem] mx-auto">
+    <Card className="w-full max-w-[380px] bg-transparent text-foreground shadow-none border-none overflow-hidden rounded-[1.5rem] mx-auto backdrop-blur-md">
       {/* Top Accent Line - DPS Blue/Yellow theme */}
       <div className="h-1.5 bg-gradient-to-r from-[#1e3a8a] to-[#facc15] w-full" />
 
@@ -177,7 +177,7 @@ export default function EnquiryForm() {
                       <SelectValue placeholder="Select Campus" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="main">Main Campus</SelectItem>
+                      <SelectItem value="main">Kovan Campus</SelectItem>
                       <SelectItem value="branch">Branch Campus</SelectItem>
                     </SelectContent>
                   </Select>
@@ -191,8 +191,10 @@ export default function EnquiryForm() {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="nursery">Nursery</SelectItem>
-                      <SelectItem value="kg">Kindergarten</SelectItem>
+                      <SelectItem value="kg">Kindergarten 1</SelectItem>
+                      <SelectItem value="kg">Kindergarten 2</SelectItem>
                       <SelectItem value="1">Grade 1</SelectItem>
+                      <SelectItem value="1">Grade 2</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
